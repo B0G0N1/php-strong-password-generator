@@ -1,10 +1,13 @@
 <?php
-// Include il file functions.php
+session_start();
 include './functions.php';
 
 // Controlla se è stata richiesta una password
 if (isset($_GET['length']) && $_GET['length'] != '') {
     $password = generateRandomPassword($_GET['length']);
+    $_SESSION['password'] = $password;
+    header('Location: success.php');
+    exit();
 }
 ?>
 
@@ -23,9 +26,5 @@ if (isset($_GET['length']) && $_GET['length'] != '') {
         <input type="number" name="length" id="length" min="6" required>
         <button type="submit">Genera Password</button>
     </form>
-
-    <?php if (isset($password)): ?>
-        <h2>Password Generata: <?php echo $password; ?></h2>
-    <?php endif; ?>
 </body>
 </html>
