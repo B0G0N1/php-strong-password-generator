@@ -1,5 +1,5 @@
 <?php
-session_start();
+session_start(); // Avvia la sessione per recuperare la password
 ?>
 
 <!DOCTYPE html>
@@ -8,6 +8,7 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Password Generata</title>
+    <!-- Importa il CSS di Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body class="bg-light">
@@ -17,8 +18,10 @@ session_start();
                 <div class="card shadow-lg border-0">
                     <div class="card-body">
                         <h1 class="text-success">Password Generata</h1>
+                        <!-- Se esiste una password nella sessione, visualizzala -->
                         <?php if (isset($_SESSION['password'])): ?>
                             <h2 class="display-4 text-primary"><?php echo $_SESSION['password']; ?></h2>
+                        <!-- Se non esiste una password, mostra un messaggio di errore -->
                         <?php else: ?>
                             <h2 class="text-danger">Nessuna password trovata.</h2>
                         <?php endif; ?>
